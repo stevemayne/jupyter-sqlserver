@@ -2,7 +2,7 @@
 Jupyter notebook with ODBC support and MS SQL Server driver
 
 ```bash
-docker run -p 8888:8888 stevemayne/jupyter-sqlserver
+docker run  -p 8888:8888 -v ~/notebooks/:/home/jovyan/work stevemayne/jupyter-sqlserver
 ```
 
 ## Example notebook content
@@ -18,9 +18,9 @@ import getpass
 server = "x.x.x.x"
 db = "my_db"
 username = "my_username"
-password = getpass.getpass("Database password?")
+password = getpass.getpass("Database password? ")
 
-conn = pyodbc.connect("Driver={sqlsrv};Server=%s;Database=%s;uid=%s;pwd=%s" % (server, db, username, password))
+conn = pyodbc.connect("Driver={sqlsrv};Server={%s};Database={%s};uid={%s};pwd={%s}" % (server, db, username, password))
 
 sql = "Select * from TABLE"
 data = pd.read_sql(sql, conn)
