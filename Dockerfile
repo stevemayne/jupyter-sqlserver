@@ -33,6 +33,7 @@ RUN conda install --quiet --yes \
     'dill=0.3*' \
     'h5py=2.9*' \
     'hdf5=1.10*' \
+    'ipython-sql' \
     'ipywidgets=7.5*' \
     'matplotlib-base=3.1.*' \
     'numba=0.45*' \
