@@ -20,16 +20,19 @@ server = "x.x.x.x"
 db = "my_db"
 username = "my_username"
 password = getpass.getpass("Database password? ")
+```
 
-#Either connect using pyodbc:
+### Either connect using pyodbc:
+```python
 conn = pyodbc.connect("Driver={sqlsrv};Server={%s};Database={%s};uid={%s};pwd={%s}" % (server, db, username, password))
 sql = "Select * from TABLE"
 data = pd.read_sql(sql, conn)
+```
 
-#Or use ipython-sql extension:
+### Or use ipython-sql extension:
+```python
 connection_string = "mssql+pyodbc://{username}:{password}@{server}/{db}?driver=sqlsrv".format(username=username, password=password, db=db, server=server)
 %sql $connection_string
 result = %sql SELECT * FROM TABLE
 data = result.DataFrame()
-
 ```
